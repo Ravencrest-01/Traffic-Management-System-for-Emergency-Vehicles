@@ -1,0 +1,31 @@
+import time
+from machine import Pin, SoftI2C
+from ssd1306 import SSD1306_I2C
+
+# Configure SoftI2C
+i2c = SoftI2C(scl=Pin(22), sda=Pin(21))
+oled = SSD1306_I2C(128, 32, i2c)  # Smaller resolution (128x32)
+
+# List of predefined arrow directions
+directions = ["^", "^", ">", "^", "^", ">", ">", ">"]
+
+# Set a larger font size
+font_size = 2
+
+
+# Function to display a single arrow on the OLED display
+def display_arrow(direction):
+    oled.fill(0)
+    oled.text(direction, 30, 20, 160)
+    oled.show()
+
+
+# Display the predefined arrows one at a time with a blinking effect
+for direction in directions:
+    display_arrow(direction)
+    time.sleep(3)  # Display the arrow for 1 second
+
+    # Toggle off the display
+    oled.fill(0)
+    oled.show()
+    time.sleep(1)  # Leave it off for 1 second

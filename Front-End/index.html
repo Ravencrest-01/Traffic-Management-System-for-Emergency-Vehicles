@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Route Finder</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Center the form container */
+      #routeForm {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: inline-block;
+        margin: 0 auto; /* Center horizontally */
+        text-align: center; /* Center the form elements */
+      }
+
+      /* Use Google Font for better typography */
+      body {
+        font-family: "Open Sans", sans-serif;
+        top: 50%;
+        left: 50%;
+        display: flex;
+        /* height: 100vh;
+        width: 100vw; */
+      }
+
+      /* Style the header */
+      h1 {
+        color: #333;
+        margin: 20px 0;
+      }
+
+      /* Style the form elements */
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0; /* Increased margin for better spacing */
+        border: 1px solid #ccc;
+        border-radius: 5px; /* Rounded corners */
+        font-size: 16px;
+      }
+
+      /* Style the submit button with a subtle curve */
+      button[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 25px; /* Curved edges */
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600; /* Increase font weight */
+        transition: background-color 0.3s;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+
+      /* Style the directions text with larger font size and weight */
+      #directions {
+        margin-top: 20px;
+        color: #333;
+        font-size: xx-large;
+        font-weight: 600;
+      }
+
+      /* Style the error container */
+      #error {
+        margin-top: 20px;
+        color: #f00;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wholeBody">
+    <h1>Route Finder</h1>
+    <form id="routeForm" action="/get_directions" method="post">
+      <input
+        type="text"
+        name="currentLocation"
+        id="currentLocation"
+        placeholder="Current location"
+      />
+      <input
+        type="text"
+        name="finalLocation"
+        id="finalLocation"
+        placeholder="Final location"
+      />
+      <button type="submit">Find Route</button>
+    </form>
+    <div id="directions"></div>
+    </div>
+  </body>
+</html>
