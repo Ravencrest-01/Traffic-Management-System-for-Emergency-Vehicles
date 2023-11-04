@@ -1,26 +1,28 @@
 from collections import deque
 import sys
+import json
 
 def find_route(current_location, final_location):
-    """Finds the route from the current location to the final location.
-
-    Args:
-        current_location: A tuple of (row, col) representing the current location.
-        final_location: A tuple of (row, col) representing the final location.
-
-    Returns:
-        A list of directions, where each direction is a string representing one of
-        the following characters: '^', 'v', '<', or '>'.
-    """
+    
 
     movements = [(0, 1, '>'), (0, -1, '<'), (1, 0, 'v'), (-1, 0, '^')]
-
+    # 7 x 7 City Grid
     city_grid = [
-        [0, 0, 0, 0, 0],
-        [0, 1, 1, 0, 0],
-        [0, 0, 0, 0, 1],
-        [0, 0, 1, 1, 1],
-        [0, 0, 0, 0, 0]
+        [0, 1, 0, 0, 0, 0, 0],
+        [0, 1, 0, 0, 0, 0, 0],
+        [0, 1, 0, 1, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0, 0],
+        [0, 0, 0, 0, 1, 0, 0],
+        [0, 0, 0, 0, 1, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0]
+
+        # [0, 0, 0, 0, 0, 0, 0],
+        # [0, 0, 0, 0, 0, 0, 0],
+        # [0, 0, 0, 0, 0, 0, 0],
+        # [0, 0, 0, 0, 0, 0, 0],
+        # [0, 0, 0, 0, 0, 0, 0],
+        # [0, 0, 0, 0, 0, 0, 0],
+        # [0, 0, 0, 0, 0, 0, 0]
     ]
 
     rows, cols = len(city_grid), len(city_grid[0])
@@ -82,11 +84,12 @@ def find_route(current_location, final_location):
 
 if __name__ == '__main__':
     current_location = tuple(map(int, sys.argv[1].split(',')) if len(sys.argv) > 1 else (1, 1))
-    final_location = tuple(map(int, sys.argv[2].split(',')) if len(sys.argv) > 2 else (4, 4))
+    final_location = tuple(map(int, sys.argv[2].split(',')) if len(sys.argv) > 2 else (6, 6))
 
     directions = find_route(current_location, final_location)
 
     if directions:
-        print("".join(directions))
+        directions_str = " ".join(directions)
+        print(" " + directions_str)
     else:
         print("None")
